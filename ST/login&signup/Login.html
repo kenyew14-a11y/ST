@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="../chatbot.css">
+  <title>Login - SportsTube</title>
+</head>
+<body>
+  <div class="logo-header">
+    <div class="logo">
+      <div class="logo-icon">ST</div>
+      <span>SportsTube</span>
+    </div>
+  </div>
+  
+  <div class="container" id="container">
+    <div class="sign-up">
+      <form id="registrationForm">
+        <h1>Create Account</h1>
+        <p class="subtitle">Join SportsTube today</p>
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+    <div class="sign-in">
+      <form id="loginForm">
+        <h1>Sign In</h1>
+        <p class="subtitle">Welcome back to SportsTube</p>
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Welcome Back!</h1>
+          <p>Already have an account? Sign in to continue watching your favorite sports videos</p>
+          <button class="hidden" id="login">Sign In</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Join SportsTube!</h1>
+          <p>Create an account to start watching amazing sports content</p>
+          <button class="hidden" id="register">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="login.js"></script>
+  <script src="../chatbot.js"></script>
+</body>
+</html>

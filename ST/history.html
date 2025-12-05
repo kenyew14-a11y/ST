@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - SportsTube</title>
+    <link rel="stylesheet" href="history.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="search.css">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <div class="menu-icon" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">ST</div>
+                <span>SportsTube</span>
+            </a>
+        </div>
+        <div class="header-center">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search sports videos...">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="icon-btn">Login</button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <a href="index.html" class="sidebar-item">
+            <span class="sidebar-icon"></span>
+            Home
+        </a>
+        <a href="explore.html" class="sidebar-item">
+            <span class="sidebar-icon"></span>
+            Explore
+        </a>
+        <a href="history.html" class="sidebar-item active">
+            <span class="sidebar-icon"></span>
+            History
+        </a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Logged In View -->
+            <div id="loggedInView" style="display: none;">
+                <div class="history-header">
+                    <h1 class="page-title">Watch History</h1>
+                    <button class="clear-history-btn" id="clearHistoryBtn">
+                        <span>Clear All History</span>
+                    </button>
+                </div>
+
+                <div id="historyContent">
+                    <!-- History videos will be loaded here by JavaScript -->
+                </div>
+
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <div class="empty-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                            <rect x="10" y="20" width="60" height="45" rx="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M35 35 L50 42.5 L35 50 Z" fill="currentColor"/>
+                            <line x1="25" y1="55" x2="55" y2="55" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h2>No watch history yet</h2>
+                    <p>Videos you watch will show up here</p>
+                    <a href="index.html" class="browse-btn">Browse Videos</a>
+                </div>
+            </div>
+
+            <!-- Not Logged In View -->
+            <div id="notLoggedInView" class="not-logged-in-view" style="display: none;">
+                <h2>Keep track of what you watch</h2>
+                <p>Watch history isn't viewable when you're signed out.</p>
+                <a href="login&signup/Login.html" class="sign-in-btn">
+                    <span>Sign in</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        menuToggle.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('visible');
+            } else {
+                sidebar.classList.toggle('hidden');
+                mainContent.classList.toggle('expanded');
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                    sidebar.classList.remove('visible');
+                }
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                sidebar.classList.remove('visible');
+            }
+        });
+    </script>
+    <script src="auth.js"></script>
+    <script src="search.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="history.js"></script>
+</body>
+</html>s
