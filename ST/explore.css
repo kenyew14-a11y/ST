@@ -344,11 +344,8 @@ header {
     background: #404040;
 }
 
-/* Add these styles to your @media (max-width: 768px) section */
-
+/* Mobile Responsive - Complete Fix */
 @media (max-width: 768px) {
-    /* Existing mobile styles... */
-    
     .sidebar {
         transform: translateX(-240px);
     }
@@ -363,6 +360,7 @@ header {
 
     .main-content {
         margin-left: 0;
+        margin-top: 56px; /* Account for fixed header */
     }
 
     .main-content.expanded {
@@ -373,28 +371,33 @@ header {
         margin: 0 16px;
     }
 
-    /* FIX: Make categories bar visible on mobile */
+    /* FIX: Categories bar - make it fixed below header on mobile */
     .categories-bar {
-        position: sticky;
-        top: 56px; /* Position below fixed header */
+        position: fixed; /* Change from sticky to fixed */
+        top: 56px; /* Position directly below the header */
+        left: 0;
+        right: 0;
+        width: 100%;
         padding: 12px 16px;
-        display: flex; /* Ensure it's displaying */
+        display: flex;
         overflow-x: auto;
-        z-index: 99; /* Lower than header (which is 1000) */
+        z-index: 98; /* Below header (1000) but above content */
         background-color: #0f0f0f;
-        margin-top: 0; /* Remove any top margin */
-    }
-    
-    /* Ensure content starts below categories bar */
-    .content-area {
-        padding: 16px;
-        padding-top: 16px; /* Add space for categories bar */
+        border-bottom: 1px solid #303030;
+        gap: 12px;
     }
 
     /* Make category chips slightly smaller on mobile */
     .category-chip {
         padding: 6px 10px;
         font-size: 13px;
+        flex-shrink: 0;
+    }
+
+    /* Add padding to content area to account for fixed categories bar */
+    .content-area {
+        padding: 16px;
+        padding-top: 60px; /* Space for the fixed categories bar */
     }
 
     .video-grid {
@@ -414,10 +417,6 @@ header {
     .logo span {
         display: none;
     }
-
-    .content-area {
-        padding: 16px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -427,6 +426,8 @@ header {
 
     /* Ensure categories are still visible on smaller screens */
     .categories-bar {
+        position: fixed;
+        top: 56px;
         padding: 10px 12px;
         gap: 8px;
     }
@@ -438,6 +439,7 @@ header {
 
     .content-area {
         padding: 16px 12px;
+        padding-top: 56px; /* Adjusted for smaller categories bar */
     }
 
     .video-grid {
