@@ -18,107 +18,7 @@ header {
     padding: 12px 16px;
     background-color: #0f0f0f;
     border-bottom: 1px solid #303030;
-    position: fixed;/* Add these styles to your @media (max-width: 768px) section */
-
-@media (max-width: 768px) {
-    /* Existing mobile styles... */
-    
-    .sidebar {
-        transform: translateX(-240px);
-    }
-
-    .sidebar.hidden {
-        transform: translateX(-240px);
-    }
-
-    .sidebar.visible {
-        transform: translateX(0);
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-
-    .main-content.expanded {
-        margin-left: 0;
-    }
-
-    .header-center {
-        margin: 0 16px;
-    }
-
-    /* FIX: Make categories bar visible on mobile */
-    .categories-bar {
-        position: sticky;
-        top: 56px; /* Keep below header */
-        padding: 12px 16px;
-        display: flex; /* Ensure it's displaying */
-        overflow-x: auto;
-        z-index: 100;
-        background-color: #0f0f0f;
-    }
-
-    /* Make category chips slightly smaller on mobile */
-    .category-chip {
-        padding: 6px 10px;
-        font-size: 13px;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .search-input {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    .search-btn {
-        padding: 8px 16px;
-    }
-
-    .logo span {
-        display: none;
-    }
-
-    .content-area {
-        padding: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        padding: 8px 12px;
-    }
-
-    /* Ensure categories are still visible on smaller screens */
-    .categories-bar {
-        padding: 10px 12px;
-        gap: 8px;
-    }
-
-    .category-chip {
-        padding: 6px 10px;
-        font-size: 12px;
-    }
-
-    .content-area {
-        padding: 16px 12px;
-    }
-
-    .video-grid {
-        gap: 12px;
-    }
-
-    .header-right .icon-btn:first-child {
-        display: none;
-    }
-
-    .section-title {
-        font-size: 18px;
-    }
-}
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -445,79 +345,6 @@ header {
 }
 
 /* Mobile Responsive */
-@media (max-width: 768px) {
-    .sidebar {
-        transform: translateX(-240px);
-    }
-
-    .sidebar.hidden {
-        transform: translateX(-240px);
-    }
-
-    .sidebar.visible {
-        transform: translateX(0);
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-
-    .main-content.expanded {
-        margin-left: 0;
-    }
-
-    .header-center {
-        margin: 0 16px;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .search-input {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    .search-btn {
-        padding: 8px 16px;
-    }
-
-    .logo span {
-        display: none;
-    }
-
-    .categories-bar {
-        padding: 12px 16px;
-    }
-
-    .content-area {
-        padding: 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        padding: 8px 12px;
-    }
-
-    .content-area {
-        padding: 16px 12px;
-    }
-
-    .video-grid {
-        gap: 12px;
-    }
-
-    .header-right .icon-btn:first-child {
-        display: none;
-    }
-
-    .section-title {
-        font-size: 18px;
-    }
-}
 /* Add these styles to your @media (max-width: 768px) section */
 
 @media (max-width: 768px) {
@@ -550,12 +377,19 @@ header {
     /* FIX: Make categories bar visible on mobile */
     .categories-bar {
         position: sticky;
-        top: 56px; /* Keep below header */
+        top: 56px; /* Position below fixed header */
         padding: 12px 16px;
         display: flex; /* Ensure it's displaying */
         overflow-x: auto;
-        z-index: 100;
+        z-index: 99; /* Lower than header (which is 1000) */
         background-color: #0f0f0f;
+        margin-top: 0; /* Remove any top margin */
+    }
+    
+    /* Ensure content starts below categories bar */
+    .content-area {
+        padding: 16px;
+        padding-top: 16px; /* Add space for categories bar */
     }
 
     /* Make category chips slightly smaller on mobile */
